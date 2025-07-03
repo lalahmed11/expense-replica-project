@@ -1,18 +1,19 @@
-
 import { useState, useEffect } from "react";
-import { Plus, TrendingUp, TrendingDown, DollarSign, Calendar, FileText, Settings, User, Bell } from "lucide-react";
+import { Plus, TrendingUp, TrendingDown, DollarSign, Calendar, FileText, Settings, User, Bell, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ExpenseChart from "@/components/ExpenseChart";
 import ExpenseList from "@/components/ExpenseList";
 import AddExpenseModal from "@/components/AddExpenseModal";
+import PDFExportModal from "@/components/PDFExportModal";
 import { getExpenses, Expense } from "@/lib/storage";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showPDFModal, setShowPDFModal] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -79,13 +80,25 @@ const Index = () => {
             <p className="text-gray-600 mt-1">Track and manage your expenses</p>
           </div>
           
-          <Button 
-            onClick={() => setShowAddModal(true)}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Add Expense
-          </Button>
+          <div className="flex gap-3">
+            <Button 
+              onClick={() => setShowPDFModal(true)}
+              variant="outline"
+              disabled={expenses.length === 0}
+              className="border-green-200 text-green-700 hover:bg-green-50"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Export PDF
+            </Button>
+            
+            <Button 
+              onClick={() => setShowAddModal(true)}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Add Expense
+            </Button>
+          </div>
         </div>
 
         {/* Stats Cards */}
@@ -182,6 +195,12 @@ const Index = () => {
         isOpen={showAddModal}
         onClose={() => setShowAddModal(false)}
         onExpenseAdded={handleExpenseAdded}
+      />
+
+      <PDFExportModal
+        isOpen={showPDFModal}
+        onClose={() => setShowPDFModal(false)}
+        expenses={expenses}
       />
     </div>
   );
