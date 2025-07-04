@@ -1,4 +1,3 @@
-
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { Expense, EXPENSE_CATEGORIES } from '@/lib/storage';
 
@@ -72,7 +71,7 @@ const ExpenseChart = ({ expenses }: ExpenseChartProps) => {
                   ))}
                 </Pie>
                 <Tooltip 
-                  formatter={(value: number) => [`$${value.toFixed(2)}`, 'Amount']}
+                  formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Amount']}
                 />
               </PieChart>
             </ResponsiveContainer>
@@ -108,10 +107,10 @@ const ExpenseChart = ({ expenses }: ExpenseChartProps) => {
                 <YAxis 
                   tick={{ fontSize: 12 }}
                   stroke="#6B7280"
-                  tickFormatter={(value) => `$${value}`}
+                  tickFormatter={(value) => `₹${value}`}
                 />
                 <Tooltip 
-                  formatter={(value: number) => [`$${value.toFixed(2)}`, 'Amount']}
+                  formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Amount']}
                   labelStyle={{ color: '#374151' }}
                   contentStyle={{ 
                     backgroundColor: 'white', 

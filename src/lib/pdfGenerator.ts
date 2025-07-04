@@ -39,7 +39,7 @@ export const generateMonthlyExpensePDF = (expenses: Expense[], month: string, ye
   doc.text('Summary:', 20, 45);
   
   doc.setFontSize(12);
-  doc.text(`Total Amount: $${totalAmount.toFixed(2)}`, 20, 55);
+  doc.text(`Total Amount: ₹${totalAmount.toFixed(2)}`, 20, 55);
   doc.text(`Total Transactions: ${totalTransactions}`, 20, 65);
   
   // Prepare data for the table
@@ -49,7 +49,7 @@ export const generateMonthlyExpensePDF = (expenses: Expense[], month: string, ye
       new Date(expense.date).toLocaleDateString(),
       expense.description,
       categoryInfo.name,
-      `$${expense.amount.toFixed(2)}`
+      `₹${expense.amount.toFixed(2)}`
     ];
   });
   
@@ -96,7 +96,7 @@ export const generateMonthlyExpensePDF = (expenses: Expense[], month: string, ye
     const categoryTableData = categoryBreakdown.map(item => [
       item.name,
       item.count.toString(),
-      `$${item.amount.toFixed(2)}`
+      `₹${item.amount.toFixed(2)}`
     ]);
     
     autoTable(doc, {

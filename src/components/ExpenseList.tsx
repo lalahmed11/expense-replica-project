@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Edit2, Trash2, Calendar, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -111,7 +110,7 @@ const ExpenseList = ({ expenses, onExpensesUpdate, showActions = true }: Expense
                     {formatDate(expense.date)}
                   </TableCell>
                   <TableCell className="text-right font-semibold text-green-600">
-                    ${expense.amount.toFixed(2)}
+                    ₹{expense.amount.toFixed(2)}
                   </TableCell>
                   {showActions && (
                     <TableCell>

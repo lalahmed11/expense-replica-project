@@ -109,7 +109,7 @@ const Index = () => {
               <DollarSign className="h-4 w-4 text-blue-600" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-blue-900">${totalExpenses.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-blue-900">₹{totalExpenses.toFixed(2)}</div>
               <p className="text-xs text-blue-600 mt-1">All time</p>
             </CardContent>
           </Card>
@@ -120,7 +120,7 @@ const Index = () => {
               <Calendar className="h-4 w-4 text-green-600" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-green-900">${thisMonthTotal.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-green-900">₹{thisMonthTotal.toFixed(2)}</div>
               <p className="text-xs text-green-600 mt-1">{thisMonthExpenses.length} transactions</p>
             </CardContent>
           </Card>
@@ -131,7 +131,7 @@ const Index = () => {
               <TrendingUp className="h-4 w-4 text-purple-600" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-purple-900">${avgExpense.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-purple-900">₹{avgExpense.toFixed(2)}</div>
               <p className="text-xs text-purple-600 mt-1">Per transaction</p>
             </CardContent>
           </Card>
